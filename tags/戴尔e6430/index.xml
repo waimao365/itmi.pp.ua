@@ -9,10 +9,10 @@
     <lastBuildDate>Sun, 08 Dec 2019 19:21:42 +0000</lastBuildDate><atom:link href="https://itmi.pp.ua/tags/%E6%88%B4%E5%B0%94e6430/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>戴尔笔记本E6430安装黑苹果的全部过程</title>
-      <link>https://itmi.pp.ua/post/9/</link>
+      <link>https://itmi.pp.ua/posts/9.html/</link>
       <pubDate>Sun, 08 Dec 2019 19:21:42 +0000</pubDate>
       
-      <guid>https://itmi.pp.ua/post/9/</guid>
+      <guid>https://itmi.pp.ua/posts/9.html/</guid>
       <description>寻找EFI文件 从黑苹果长期维护机型 EFI 及安装教程整理 https://www.jianshu.com/p/484f07b8c7fd 找到 https://github.com/kinoute/Hack-Dell-Latitude-E6430 下载EFI文件夹 下载系统 从黑果小兵下载macOS Mojave 10.14.6，自带Clover</description>
     </item>
     
