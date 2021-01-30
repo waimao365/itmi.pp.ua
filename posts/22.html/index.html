@@ -49,7 +49,7 @@
 <meta itemprop="description" content="前言 做博客就图个稳定，一次性买了10年的域名，搭配免费的github，适合做长期博客。 之前安装的hexo，可玩性非常强，前面文章有写一些关于">
 <meta itemprop="datePublished" content="2020-06-01T15:55:32+00:00" />
 <meta itemprop="dateModified" content="2020-06-01T15:55:32+00:00" />
-<meta itemprop="wordCount" content="1293">
+<meta itemprop="wordCount" content="1502">
 
 
 
@@ -138,7 +138,7 @@
             <a href="/categories/%E7%BD%91%E7%AB%99/"> 网站 </a>
             <a href="/categories/github/"> github </a>
             </div>
-          <span class="more-meta"> 约 1293 字 </span>
+          <span class="more-meta"> 约 1502 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -157,10 +157,16 @@
       <ul>
         <li><a href="#添加固定链接">添加固定链接</a></li>
         <li><a href="#写文章后部署">写文章后部署</a></li>
+        <li><a href="#修改主题文件后">修改主题文件后</a></li>
         <li><a href="#netlify-自动编译部署生成-web-网站">Netlify 自动编译部署生成 Web 网站</a></li>
         <li><a href="#快速在netlify建立jekyllhexohugo静态博客">快速在Netlify建立Jekyll、Hexo、Hugo静态博客</a></li>
         <li><a href="#写文章日期格式">写文章日期格式</a></li>
-        <li><a href="#从hexo导入文章到hugo的固定链接设置">从hexo导入文章到hugo的固定链接设置</a></li>
+        <li><a href="#从hexo导入文章到hugo的固定链接设置">从hexo导入文章到hugo的固定链接设置</a>
+          <ul>
+            <li><a href="#hugo固定链接设置方法一">hugo固定链接设置方法一</a></li>
+            <li><a href="#hugo固定链接设置方法二">hugo固定链接设置方法二</a></li>
+          </ul>
+        </li>
         <li><a href="#绑定域名">绑定域名</a></li>
       </ul>
     </li>
@@ -219,9 +225,33 @@ url: /hugodajian.html<br>
 <h2 id="写文章后部署">写文章后部署</h2>
 <p>在blog目录输入hugo<br>
 在blog/public目录依次输入<br>
-git add .<br>
+git add -A 
 git commit -m &ldquo;yyyy/mm/dd-hh:mm&rdquo;<br>
-git push -u origin master</p>
+git push</p>
+<p>git push -u origin master # 首次部署输入这个</p>
+<p>自动部署文章</p>
+<p>在blog根目录新建一个 deploy.sh  内容设置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>hugo -t even <span class="c1"># 我使用的是even主题，所以是 -t even</span>
+<span class="nb">cd</span>  /f/hugo/itmi/public
+git add .
+git commit -m <span class="s2">&#34;yyyy/mm/dd-hh:mm&#34;</span>
+git push
+</code></pre></td></tr></table>
+</div>
+</div><p>写文章后双击deploy.sh，文章就会自动部署了。</p>
+<h2 id="修改主题文件后">修改主题文件后</h2>
+<p>在blog根目录输入：git init</p>
 <h2 id="netlify-自动编译部署生成-web-网站">Netlify 自动编译部署生成 Web 网站</h2>
 <p>官方首页：https://www.netlify.com</p>
 <h2 id="快速在netlify建立jekyllhexohugo静态博客">快速在Netlify建立Jekyll、Hexo、Hugo静态博客</h2>
@@ -231,14 +261,23 @@ git push -u origin master</p>
 <p>date: 2020-06-01 15:55:32</p>
 <h2 id="从hexo导入文章到hugo的固定链接设置">从hexo导入文章到hugo的固定链接设置</h2>
 <p>hexo设置 permalink: posts/:abbrlink.html<br>
-文章页面设置 abbrlink: 1   （每篇文章加一个数）<br>
-hugo固定链接设置<br>
-文章里面的<br>
+文章页面设置 abbrlink: 1   （每篇文章加一个数）</p>
+<h3 id="hugo固定链接设置方法一">hugo固定链接设置方法一</h3>
+<p>文章里面的<br>
 abbrlink: 1<br>
 改成<br>
 url: /posts/1.html<br>
 域名从hexo解析到hugo后，固定链接是不变的<br>
 也可以不用阿拉伯数字，随便输入其他字母也是可以的，这个看个人喜欢了。</p>
+<h3 id="hugo固定链接设置方法二">hugo固定链接设置方法二</h3>
+<p>even主题为例：</p>
+<p>在config.toml加上</p>
+<p>[permalinks]
+post = &ldquo;/posts/:slug.html&rdquo;</p>
+<p>文章头部填：    slug: 22   # 数字越大越在前面</p>
+<p>为了方便以后转hexo，可以直接两个都填上</p>
+<p>abbrlink: 22
+slug: 22</p>
 <h2 id="绑定域名">绑定域名</h2>
 <p>绑域名非常简单，大家可以翻我前面的教程。<br>
 这里发现一个问题<br>
