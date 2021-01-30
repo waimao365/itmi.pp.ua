@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://itmi.pp.ua/sitemap.xml
